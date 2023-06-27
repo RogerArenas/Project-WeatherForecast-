@@ -59,9 +59,7 @@ public class WeatherForecastController {
 	@GetMapping("/{city}")
 	public WeatherResponse getWeather( @PathVariable String city) {
 
-	  WeatherResponse responseResponseEntity = getExternaApiWeather.getWeatherData( city);
-
-		return responseResponseEntity;
+		return getExternaApiWeather.getWeatherData( city);
 	}
 
 

@@ -1,13 +1,15 @@
 package br.com.weather.Forecast.model;
 
 
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
+
 
 @NoArgsConstructor
 @Data

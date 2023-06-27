@@ -1,9 +1,9 @@
 package br.com.weather.Forecast.exception;
 
-import jakarta.annotation.Nullable;
 import lombok.Getter;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.lang.Nullable;
 
 import java.io.Serial;
 import java.nio.charset.Charset;

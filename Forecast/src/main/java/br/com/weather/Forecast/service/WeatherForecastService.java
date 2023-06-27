@@ -15,7 +15,10 @@ import java.util.Optional;
 @Service
 public class WeatherForecastService {
 
-	private final WeatherRepository repository;
+	@Autowired
+	WeatherRepository repository;
+
+	//private final WeatherRepository repository;
 
 	@Autowired
 	public WeatherForecastService(WeatherRepository repository) {

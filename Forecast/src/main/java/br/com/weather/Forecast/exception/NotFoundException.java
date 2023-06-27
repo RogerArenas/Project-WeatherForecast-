@@ -1,6 +1,5 @@
 package br.com.weather.Forecast.exception;
 
-import jakarta.annotation.Nullable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 
