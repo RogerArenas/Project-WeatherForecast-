@@ -10,7 +10,9 @@ import java.util.List;
 @Component
 public interface WeatherForecastDomain {
 
-	WeatherForecastDto get( String city, LocalDate date);
+	WeatherForecastDto get( String city, LocalDate datePrevision);
+
+	Weather getByCity( String city);
 
 	Weather cadastrarDados( Weather weatherEntity);
 

@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 
 @NoArgsConstructor
@@ -24,8 +23,8 @@ public class Weather implements Serializable {
 	@Column( name = "id", nullable = false )
 	private Long      id;
 	private String    city;
-	@Column(name = "date")
-	private LocalDate date;
+	@Column(name = "datePrevision")
+	private LocalDate datePrevision;
 	private Double    temperature;
 	private Double    humidity;
 	private String    moreInformation;

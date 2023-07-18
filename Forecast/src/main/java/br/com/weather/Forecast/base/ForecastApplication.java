@@ -1,7 +1,6 @@
 package br.com.weather.Forecast.base;
 
 import br.com.weather.Forecast.model.Weather;
-import br.com.weather.Forecast.repository.WeatherRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;

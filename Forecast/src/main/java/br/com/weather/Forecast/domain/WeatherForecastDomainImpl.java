@@ -16,14 +16,14 @@ public class WeatherForecastDomainImpl implements  WeatherForecastDomain {
 	WeatherForecastService weatherForecastService;
 
 
-	@Override
-	public WeatherForecastDto get( String city, LocalDate date ) {
-		List< Weather > optionalWeather = weatherForecastService.findByCityAndDatePrevision( city, date );
+
+	public WeatherForecastDto get( String city ) {
+		Weather  optionalWeather = weatherForecastService.findByCity( city);
 		if ( !( optionalWeather == null ) ) {
 			Weather weatherResult = ( Weather ) optionalWeather;
 			WeatherForecastDto weatherForecastDto = new WeatherForecastDto();
 			weatherForecastDto.setCity(weatherResult.getCity());
-			weatherForecastDto.setDatePrevision(weatherResult.getDate());
+			weatherForecastDto.setDatePrevision(weatherResult.getDatePrevision());
 			weatherForecastDto.setHumidity(weatherResult.getHumidity());
 			weatherForecastDto.setTemperature(weatherResult.getTemperature());
 			weatherForecastDto.setMoreInformation(weatherResult.getMoreInformation());
@@ -37,6 +37,16 @@ public class WeatherForecastDomainImpl implements  WeatherForecastDomain {
 
 	public List<Weather> getAll( ){
 		return weatherForecastService.getAllWeatherForecast();
+	}
+
+	@Override
+	public WeatherForecastDto get( String city, LocalDate datePrevision ) {
+		return null;
+	}
+
+	@Override
+	public Weather getByCity( String city ) {
+		return  weatherForecastService.findByCity( city );
 	}
 
 	@Override
