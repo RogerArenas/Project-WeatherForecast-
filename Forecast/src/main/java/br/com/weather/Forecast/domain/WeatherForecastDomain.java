@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public interface WeatherForecastDomain {
@@ -17,4 +18,8 @@ public interface WeatherForecastDomain {
 	Weather cadastrarDados( Weather weatherEntity);
 
 	 List<Weather> getAll( );
+
+	Optional< Weather > deleteById( Long id );
+
+	Weather update( Long id, Weather weather );
 }

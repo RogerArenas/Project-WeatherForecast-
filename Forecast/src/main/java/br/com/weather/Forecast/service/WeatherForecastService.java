@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,18 +67,39 @@ public class WeatherForecastService {
 	public List<Weather> getAllWeatherForecast(){
 		return repository.findAll();
 	}
-/*
-	public Weather update( Long id, Weather weather ) {
-		Assert.notNull( id,"Não foi possivel atualizar o registro" );
 
-		//Buscar o registro no banco dados
-		List< Weather > optional = findByCityAndDatePrevision(String city, LocalDate datePrevision);
-		if(optional.isPresent()) {
-
-		}
-
-		return repository.save( weather,id );
+	public void deleteById( Long id ) {
+	 repository.deleteById( id );
 	}
 
- */
+	public Optional< Weather > findById( Long id ) {
+		return repository.findById( id );
+	}
+
+
+
+	public Weather update(Long id, Weather updatedWeather) {
+		// Buscar o registro no banco de dados
+		Optional<Weather> optional = findById(id);
+		if (optional.isPresent()) {
+			// Se o registro existir, obter o objeto Weather atual do banco de dados
+			Weather existingWeather = optional.get();
+
+			// Atualizar os atributos do objeto Weather existente com os valores do objeto atualizado
+			existingWeather.setCity(updatedWeather.getCity());
+			existingWeather.setDatePrevision(updatedWeather.getDatePrevision());
+			existingWeather.setTemperature(updatedWeather.getTemperature());
+			existingWeather.setHumidity(updatedWeather.getHumidity());
+			existingWeather.setMoreInformation(updatedWeather.getMoreInformation());
+
+			// Salvar as alterações no repositório
+			return repository.save(existingWeather);
+		} else {
+			// Se o registro não for encontrado, retornar null ou lançar uma exceção, conforme sua preferência
+			throw new NotFoundException( "Registro não encontrado no banco dados" ); // ou lançar uma exceção, como EntityNotFoundException
+		}
+	}
+
+
+
 }

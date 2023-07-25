@@ -9,6 +9,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+
 @Component
 public class WeatherForecastDomainImpl implements  WeatherForecastDomain {
 
@@ -40,6 +42,23 @@ public class WeatherForecastDomainImpl implements  WeatherForecastDomain {
 	}
 
 	@Override
+	public Optional< Weather > deleteById( Long id ) {
+
+		Optional<Weather> optionalWeather = weatherForecastService.findById( id );
+		if(optionalWeather.isPresent()){
+			weatherForecastService.deleteById( id );
+			return optionalWeather;
+		}else {
+			return Optional.empty();
+		}
+	}
+
+	@Override
+	public Weather update( Long id, Weather weather ) {
+		return null;
+	}
+
+	@Override
 	public WeatherForecastDto get( String city, LocalDate datePrevision ) {
 		return null;
 	}
@@ -53,4 +72,11 @@ public class WeatherForecastDomainImpl implements  WeatherForecastDomain {
 	public Weather cadastrarDados( Weather weatherEntity ) {
 		return null;
 	}
+
+
+	public Optional< Weather> Update( Long id){
+		return weatherForecastService.findById(id);
+	}
+
+
 }
