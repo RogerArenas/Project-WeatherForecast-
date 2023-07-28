@@ -55,7 +55,7 @@ public class WeatherForecastDomainImpl implements  WeatherForecastDomain {
 
 	@Override
 	public Weather update( Long id, Weather weather ) {
-		return null;
+		return weatherForecastService.update( id, weather );
 	}
 
 	@Override

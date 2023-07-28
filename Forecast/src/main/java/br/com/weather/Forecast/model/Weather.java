@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
-
+import java.util.Optional;
 
 @NoArgsConstructor
 @Data
@@ -29,4 +29,6 @@ public class Weather implements Serializable {
 	private Double    humidity;
 	private String    moreInformation;
 
+	public Weather( Optional< Weather> updatedWeather, String s ) {
+	}
 }
