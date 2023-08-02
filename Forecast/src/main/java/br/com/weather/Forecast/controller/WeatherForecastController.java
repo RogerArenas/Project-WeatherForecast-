@@ -5,7 +5,6 @@ import br.com.weather.Forecast.dto.WeatherForecastDto;
 import br.com.weather.Forecast.dto.response.SaveWeatherResponse;
 import br.com.weather.Forecast.exception.NotFoundException;
 import br.com.weather.Forecast.model.Weather;
-import br.com.weather.Forecast.service.GetExternaApiWeather;
 import br.com.weather.Forecast.service.WeatherForecastService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;
@@ -15,7 +14,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -24,8 +25,7 @@ import java.util.Optional;
 @RestController
 @Log4j2
 public class WeatherForecastController {
-    @Autowired
-     GetExternaApiWeather getExternaApiWeather;
+
 	@Autowired
 	WeatherForecastService wfService;
 
@@ -81,6 +81,7 @@ public class WeatherForecastController {
 			throw new IllegalArgumentException("A lista de previsões do tempo não pode estar vazia");
 		}
 
+
 		List< Weather > savedweather = wfService.cadastrarDados( weatherList );
 
 		String message = "Previsões do tempo salvas com sucesso!!";
@@ -88,6 +89,7 @@ public class WeatherForecastController {
 		SaveWeatherResponse response = new SaveWeatherResponse( message, savedweather );
 
 		return ResponseEntity.status( HttpStatus.CREATED ).body( response );
+
 
 	}
 
@@ -131,7 +133,8 @@ public class WeatherForecastController {
 
 
 		return ResponseEntity.ok(response);
-	}catch ( NotFoundException e ){
+
+	} catch ( NotFoundException e ){
 		throw new NotFoundException( "Erro ao atualizar registro" + e.getMessage());
 	}
 

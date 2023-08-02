@@ -5,13 +5,12 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.lang.Nullable;
 
-import java.io.Serial;
 import java.nio.charset.Charset;
 
 @Getter
 public class WeatherForecastException extends RuntimeException{
 
-	@Serial
+
 	private static final long serialVersionUID = -3338125523245584585L;
 
 	private final HttpStatus status;

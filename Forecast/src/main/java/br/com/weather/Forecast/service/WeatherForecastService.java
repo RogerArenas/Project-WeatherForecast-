@@ -56,12 +56,12 @@ public class WeatherForecastService {
   */
 	public List<Weather> cadastrarDados( List< Weather > weatherEntity) {
 
-		List<Weather> weathers = new ArrayList<>(  );
+		List<Weather> weathersList = new ArrayList<>(  );
 		for(Weather weather: weatherEntity){
 			Weather savedWeather =  repository.save(weather);
-			weathers.add( savedWeather );
+			weathersList.add( savedWeather );
 		}
-		return weathers;
+		return weathersList;
 	}
 
 	public List<Weather> getAllWeatherForecast(){
